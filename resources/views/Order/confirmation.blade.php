@@ -10,8 +10,10 @@
         <div class="container" data-aos="fade-up">
             <div class="section-title">    
                 <h1>{{$order->name}}</h1> 
-                <i>Lantai : {{$order->floor}}</i>
-                <i>Meja : {{$order->table}}</i>
+                @if(!empty($order->floor && !empty($order->table)))
+                    <i>Lantai : {{$order->floor}}</i>
+                    <i>Meja : {{$order->table}}</i>
+                @endif
                 <h3>Tanggal : {{date('d-m-Y')}}</h3>
             </div>
             <table class="table table-hover mb-5">
@@ -39,7 +41,7 @@
                 </tbody>
             </table>
             <h2> Total Pesanan anda adalah {{$order->total}}</h2>
-            <a href='/dine_in?order_id={{$order->id}}' class="add-btn scrollto">Tambah Pesanan</a>
+            <a href='/order/{{$order->id}}' class="add-btn scrollto">Tambah Pesanan</a>
         </div>
     </div>
 </section>

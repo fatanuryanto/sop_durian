@@ -20,7 +20,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/',[MenuController::class,'index']);
-Route::get('/dine_in',[OrderController::class,'dine_in']);
+Route::get('/order/{id}',[OrderController::class,'create']);
 Route::get('/take_away',[OrderController::class,'take_away']);
 Route::post('/order/store',[OrderController::class,'store']);
 

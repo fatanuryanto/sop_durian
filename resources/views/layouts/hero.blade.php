@@ -114,7 +114,7 @@
             <form action="/order/store" method="POST" class="portfolio">
             {{ csrf_field() }}
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Dine_in</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Pemesanan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
                 <div class="modal-body">
@@ -122,26 +122,24 @@
                     <div class=" align-self-center">
                         <div class="row">
                             <div class="form-group">
-                                <h5>Tanggal : {{date('d-m-Y')}}</h5>
                                 <input type='text' class="form-control mb-1" name="name" placeholder="Nama Anda" requred>
                             </div>
-                    
-                            <div class="col-md-6 form-group">
-                                <input type='radio' id="dine_ine" value="Available" onClick="disable()"> Bawa Pulang <br> 
-                                <input type='radio' id="take_awaty" value="Unavailable"> Makan Ditempat <br> 
+                            <div class="col-md-6 form-group pt-2">
+                                <h5>Tanggal : {{date('d-m-Y')}}</h5>
+                                <input type='checkbox' id="take_away"> Bawa Pulang ?
                             </div>
-                          
-                        
+                    
                             <div class="col-md-6 form-group">
                                 <input type="number" class="form-control mb-1" name="floor" id="floor" placeholder="Nomor Lantai">
                                 <input type="number" class="form-control mb-1" name="table" id="table" placeholder="Nomor Meja">
                             </div>
+                         
                         </div>
                     </div>
                     <script>
-                        disable() {
-                            document.getElementById('floor').disable=true;
-                            document.getElementById('table').disable=true;
+                        document.getElementById('take_away').onchange = function() {
+                            document.getElementById('floor').disabled = this.checked;
+                            document.getElementById('table').disabled = this.checked;
                         };
                     </script>
                 </div>

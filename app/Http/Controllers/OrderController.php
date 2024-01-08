@@ -18,14 +18,6 @@ class OrderController extends Controller
         return view('order.index',compact('orders'));
     }
 
-
-     public function create()
-    {
-        $categories=Category::with('menu')->get();
-        $order = Order::find($_GET['order_id']);
-        return view('order.dine_in',compact('categories','order'));
-    }
-
     public function store(Request $request)
     {
         $order_id = Order::firstOrCreate(
@@ -34,6 +26,14 @@ class OrderController extends Controller
                 'floor'=>$request->floor,
                 'table'=>$request->table,
             ],$request->all())->id;
-        return redirect("/dine_in?order_id=".$order_id);
+        return redirect("/order/".$order_id);
+    }
+
+    public function create($id)
+    {
+        $menus=Category::with('menu')->get();
+        $order = Order::find($id);
+        return $menus;
+        return view('order.order',compact('menus','order'));
     }
 }
